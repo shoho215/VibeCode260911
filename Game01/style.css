@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --ink: #10151b;
+  --paper: #e7f0e8;
+  --mint: #b5e6c8;
+  --lime: #c8f169;
+  --orange: #ff784f;
+  --pink: #ff5d93;
+  --cyan: #57d9e8;
+  --yellow: #f7d65b;
+  --purple: #9d87ed;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--mint);
+  font-family: 'Space Mono', monospace;
+  background-image: linear-gradient(135deg, rgba(255,255,255,.25) 25%, transparent 25%), linear-gradient(315deg, rgba(255,255,255,.16) 25%, transparent 25%);
+  background-size: 34px 34px;
+}
+
+.game-shell { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 28px; }
+.game-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 26px; }
+.eyebrow, .panel-label { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+h1 { margin: 3px 0 0; font: 800 clamp(42px, 8vw, 76px)/.85 'Barlow Condensed', sans-serif; letter-spacing: .01em; }
+h1 span { color: var(--orange); }
+.icon-button, .control-button, .primary-button { border: 3px solid var(--ink); color: var(--ink); background: var(--lime); font: 700 20px 'Space Mono', monospace; cursor: pointer; box-shadow: 4px 4px 0 var(--ink); transition: transform .12s, box-shadow .12s; }
+.icon-button { width: 52px; height: 52px; font-size: 17px; }
+.icon-button:active, .control-button:active, .primary-button:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+
+.game-layout { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: start; }
+.board-wrap { position: relative; width: 300px; border: 5px solid var(--ink); background: var(--ink); box-shadow: 10px 10px 0 rgba(16,21,27,.18); }
+#game-board { display: block; width: 100%; height: auto; background: #17242a; }
+.game-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; background: rgba(16,21,27,.88); color: var(--paper); text-align: center; }
+.game-overlay.hidden { display: none; }
+.game-overlay p { margin: 0; font: 800 42px/1 'Barlow Condensed', sans-serif; letter-spacing: .04em; }
+.primary-button { padding: 12px 18px; font-size: 13px; }
+
+.sidebar { display: grid; gap: 24px; max-width: 330px; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: var(--ink); border: 3px solid var(--ink); }
+.stat { min-height: 93px; padding: 14px; display: flex; flex-direction: column; justify-content: space-between; background: var(--paper); }
+.stat:nth-child(2) { background: var(--yellow); }
+.stat:nth-child(3) { background: var(--cyan); }
+.stat:nth-child(4) { background: var(--pink); }
+.stat span { font-size: 10px; font-weight: 700; }
+.stat strong { font: 700 30px/1 'Barlow Condensed', sans-serif; }
+.next-panel { padding: 17px; border: 3px solid var(--ink); background: var(--orange); box-shadow: 6px 6px 0 var(--ink); }
+.next-panel .panel-label, .controls-help .panel-label { margin-bottom: 10px; }
+#next-board { display: block; background: rgba(255,255,255,.27); border: 2px solid var(--ink); }
+.controls-help { padding-top: 4px; }
+.controls-help p { margin: 9px 0; font-size: 11px; }
+kbd { display: inline-flex; min-width: 24px; height: 22px; align-items: center; justify-content: center; margin-right: 5px; border: 2px solid var(--ink); background: var(--paper); font: 700 11px 'Space Mono', monospace; }
+.mobile-controls { display: none; }
+footer { margin-top: 36px; font-size: 11px; font-weight: 700; }
+
+@media (max-width: 680px) {
+  .game-shell { padding-top: 24px; }
+  .game-header { margin-bottom: 20px; }
+  .game-layout { grid-template-columns: minmax(0, 1fr); gap: 20px; justify-items: center; }
+  .board-wrap { width: min(300px, 82vw); }
+  .sidebar { width: min(360px, 100%); grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat-grid { grid-column: 1 / -1; }
+  .next-panel { box-shadow: 4px 4px 0 var(--ink); }
+  .controls-help { padding: 7px 0 0 8px; }
+  .controls-help p { font-size: 9px; margin: 7px 0; }
+  .mobile-controls { width: min(360px, 100%); margin: 25px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .control-button { height: 52px; font-size: 24px; }
+  .drop-button { background: var(--orange); }
+  footer { margin-top: 24px; text-align: center; }
+}

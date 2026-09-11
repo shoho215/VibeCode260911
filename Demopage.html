@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>웹 기초 학습실</title>
+  <style>
+    :root {
+      --ink: #17252d;
+      --muted: #617078;
+      --paper: #f7f2e8;
+      --white: #fffdf8;
+      --line: #d9d1c2;
+      --coral: #e86f5d;
+      --yellow: #f1c75b;
+      --blue: #367489;
+      --mint: #c5e2d6;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--mint), transparent 40%), var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.55;
+    }
+    .page { max-width: 1100px; margin: auto; padding: 28px 22px 55px; }
+    header { padding: 22px 0 30px; border-bottom: 2px solid var(--ink); }
+    .eyebrow { margin: 0 0 8px; color: var(--coral); font: bold .78rem "Trebuchet MS", sans-serif; letter-spacing: .14em; }
+    h1 { margin: 0 0 12px; font-size: clamp(2.8rem, 8vw, 5.8rem); line-height: .92; letter-spacing: -.05em; }
+    h1 span { color: var(--blue); }
+    header p:last-child { max-width: 620px; margin-bottom: 0; color: var(--muted); font-size: 1.1rem; }
+    main { display: grid; gap: 28px; padding-top: 30px; }
+    .lessons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card, .practice { background: var(--white); border: 1px solid var(--line); box-shadow: 0 14px 30px rgba(23, 37, 45, .1); }
+    .card { min-height: 255px; padding: 22px; border-top: 7px solid var(--mint); }
+    .card:nth-child(2) { border-top-color: var(--yellow); }
+    .card:nth-child(3) { border-top-color: var(--coral); }
+    h2 { margin: 0 0 12px; font-size: 1.55rem; }
+    .card p { color: var(--muted); }
+    code { padding: 2px 5px; color: var(--blue); background: #e5f0ec; font: .9em Consolas, monospace; }
+    pre { overflow-x: auto; margin: 15px 0 0; padding: 13px; color: #f7f2e8; background: var(--ink); font: .8rem/1.6 Consolas, monospace; }
+    .mark { color: var(--yellow); }
+    .practice { display: grid; grid-template-columns: .85fr 1.15fr; overflow: hidden; }
+    .explanation { padding: 28px; color: var(--white); background: var(--ink); }
+    .explanation h2 { color: var(--yellow); font-size: 2rem; }
+    .explanation p, .explanation li { color: #d3dfda; }
+    .workspace { padding: 28px; }
+    #demo { display: grid; place-items: center; min-height: 160px; padding: 22px; border: 2px dashed var(--line); text-align: center; transition: .2s ease; }
+    #demo.active { background: #fff0e8; border-color: var(--coral); transform: rotate(-1deg); }
+    #demo strong { display: block; font-size: 1.45rem; }
+    #demo small { color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    button { padding: 11px 15px; border: 0; color: var(--white); background: var(--blue); cursor: pointer; font: bold .9rem "Trebuchet MS", sans-serif; }
+    button:hover, button:focus-visible { background: var(--coral); outline: 3px solid rgba(232, 111, 93, .25); }
+    button.alt { color: var(--ink); background: var(--yellow); }
+    #result { min-height: 25px; margin: 14px 0 0; color: var(--blue); font-weight: bold; }
+    footer { display: flex; justify-content: space-between; gap: 15px; padding-top: 22px; color: var(--muted); font: .8rem "Trebuchet MS", sans-serif; }
+    @media (max-width: 760px) {
+      .lessons, .practice { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      footer { display: block; }
+      footer span { display: block; margin-top: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="eyebrow">WEB BASICS / START HERE</p>
+      <h1>웹을 만드는<br><span>세 가지 언어</span></h1>
+      <p>HTML5는 구조, CSS3는 디자인, JavaScript는 동작을 담당합니다. 아래 예제를 읽고 버튼을 직접 눌러보세요.</p>
+    </header>
+
+    <main>
+      <section class="lessons" aria-label="웹 기술 기초 설명">
+        <article class="card" id="html">
+          <h2>01. HTML5</h2>
+          <p>제목, 문단, 이미지처럼 페이지에 들어갈 <strong>내용과 구조</strong>를 만듭니다. 태그는 콘텐츠의 역할을 브라우저에 알려줍니다.</p>
+          <pre><span class="mark">&lt;h1&gt;</span>첫 페이지<span class="mark">&lt;/h1&gt;</span>
+<span class="mark">&lt;p&gt;</span>반가워요!<span class="mark">&lt;/p&gt;</span></pre>
+        </article>
+        <article class="card" id="css">
+          <h2>02. CSS3</h2>
+          <p>HTML 요소의 색, 크기, 여백, 배치를 꾸밉니다. <code>class</code>를 사용하면 여러 요소에 같은 스타일을 줄 수 있습니다.</p>
+          <pre><span class="mark">.title</span> {
+  <span class="mark">color</span>: coral;
+  <span class="mark">font-size</span>: 2rem;
+}</pre>
+        </article>
+        <article class="card" id="javascript">
+          <h2>03. JavaScript</h2>
+          <p>클릭, 입력 같은 사건에 반응해 화면을 바꿉니다. <code>addEventListener</code>는 이벤트가 발생했을 때 코드를 실행합니다.</p>
+          <pre>button.<span class="mark">addEventListener</span>(<span class="mark">"click"</span>, () =&gt; {
+  message.textContent = <span class="mark">"성공!"</span>;
+});</pre>
+        </article>
+      </section>
+
+      <section class="practice" aria-labelledby="practice-title">
+        <div class="explanation">
+          <p class="eyebrow">TRY IT / LIVE DEMO</p>
+          <h2 id="practice-title">직접 실행하는<br>작은 실험</h2>
+          <p>아래 영역은 세 기술이 함께 작동하는 예제입니다.</p>
+          <ul>
+            <li>HTML: 화면의 문장과 버튼</li>
+            <li>CSS: 색상과 움직임</li>
+            <li>JavaScript: 클릭 이벤트</li>
+          </ul>
+        </div>
+        <div class="workspace">
+          <div id="demo">
+            <div>
+              <strong id="message">버튼을 눌러보세요</strong>
+              <small id="state">아직 이벤트가 실행되지 않았습니다.</small>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="run" type="button">메시지 바꾸기</button>
+            <button id="paint" class="alt" type="button">색상 바꾸기</button>
+          </div>
+          <p id="result" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>HTML5 · CSS3 · JavaScript</span><span>읽고, 눌러보고, 코드를 바꿔보세요.</span></footer>
+  </div>
+
+  <script>
+    const demo = document.querySelector("#demo");
+    const message = document.querySelector("#message");
+    const state = document.querySelector("#state");
+    const result = document.querySelector("#result");
+    const backgrounds = ["#fff0e8", "#e5f0ec", "#fff8d7"];
+    let colorIndex = 0;
+
+    document.querySelector("#run").addEventListener("click", () => {
+      demo.classList.add("active");
+      message.textContent = "클릭 이벤트가 실행됐어요!";
+      state.textContent = "JavaScript가 HTML 내용을 변경했습니다.";
+      result.textContent = "✓ 메시지 변경 완료";
+    });
+
+    document.querySelector("#paint").addEventListener("click", () => {
+      colorIndex = (colorIndex + 1) % backgrounds.length;
+      demo.style.backgroundColor = backgrounds[colorIndex];
+      result.textContent = `✓ CSS 배경색 변경: ${backgrounds[colorIndex]}`;
+    });
+  </script>
+</body>
+</html>

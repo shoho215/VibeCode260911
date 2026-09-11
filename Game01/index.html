@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEON TETRIS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="game-header">
+      <div>
+        <p class="eyebrow">ARCADE / 001</p>
+        <h1>NEON <span>TETRIS</span></h1>
+      </div>
+      <button id="pause-button" class="icon-button" type="button" aria-label="게임 일시정지">Ⅱ</button>
+    </section>
+
+    <section class="game-layout">
+      <div class="board-wrap">
+        <canvas id="game-board" width="300" height="600" aria-label="테트리스 게임 보드"></canvas>
+        <div id="game-overlay" class="game-overlay hidden">
+          <p id="overlay-title">GAME OVER</p>
+          <button id="restart-overlay" class="primary-button" type="button">다시 시작</button>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="stat-grid">
+          <div class="stat"><span>점수</span><strong id="score">0</strong></div>
+          <div class="stat"><span>최고 점수</span><strong id="high-score">0</strong></div>
+          <div class="stat"><span>레벨</span><strong id="level">1</strong></div>
+          <div class="stat"><span>라인</span><strong id="lines">0</strong></div>
+        </div>
+
+        <div class="next-panel">
+          <div class="panel-label">NEXT BLOCK</div>
+          <canvas id="next-board" width="120" height="120" aria-label="다음 블록"></canvas>
+        </div>
+
+        <div class="controls-help">
+          <div class="panel-label">CONTROLS</div>
+          <p><kbd>←</kbd><kbd>→</kbd> 이동</p>
+          <p><kbd>↓</kbd> 빠르게 내리기</p>
+          <p><kbd>↑</kbd> 회전</p>
+          <p><kbd>SPACE</kbd> 즉시 내리기</p>
+        </div>
+      </aside>
+    </section>
+
+    <div class="mobile-controls" aria-label="게임 조작 버튼">
+      <button class="control-button" data-action="left" type="button">←</button>
+      <button class="control-button" data-action="rotate" type="button">↻</button>
+      <button class="control-button drop-button" data-action="drop" type="button">↓</button>
+      <button class="control-button" data-action="right" type="button">→</button>
+    </div>
+
+    <footer>선을 완성하고 흐름을 이어가세요.</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

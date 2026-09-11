@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <title>STARFALL // VERTICAL ASSAULT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <p class="eyebrow">ARCADE / MISSION 02</p>
+        <h1>STARFALL <span>ASSAULT</span></h1>
+      </div>
+      <button id="pause-button" class="pause-button" type="button" aria-label="게임 일시정지">II</button>
+    </header>
+
+    <section class="game-frame">
+      <div class="hud hud-top">
+        <div><span>SCORE</span><strong id="score">000000</strong></div>
+        <div><span>HIGH</span><strong id="high-score">000000</strong></div>
+        <div><span>WAVE</span><strong id="wave">01</strong></div>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="game-canvas" width="480" height="720" aria-label="스타폴 종스크롤 슈팅 게임"></canvas>
+        <div id="game-overlay" class="game-overlay hidden">
+          <p class="overlay-kicker">SIGNAL LOST</p>
+          <h2 id="overlay-title">GAME OVER</h2>
+          <p id="overlay-copy">최종 점수 000000</p>
+          <button id="restart-button" class="action-button" type="button">REDEPLOY</button>
+        </div>
+      </div>
+      <div class="hud hud-bottom">
+        <div class="status-line"><span>ARMOR</span><div class="meter"><i id="armor-meter"></i></div></div>
+        <div class="status-line"><span>POWER</span><div class="power-pips" id="power-pips"><i></i><i></i><i></i></div></div>
+        <div class="status-line"><span id="mission-status">SECTOR CLEAR</span></div>
+      </div>
+    </section>
+
+    <section class="instructions">
+      <div><span class="key">A</span><span class="key">D</span><span class="key">←</span><span class="key">→</span> MOVE</div>
+      <div><span class="key wide">SPACE</span> FIRE</div>
+      <div><span class="key">P</span> PAUSE</div>
+    </section>
+
+    <div class="touch-controls" aria-label="터치 조작 버튼">
+      <button class="touch-button" data-control="left" type="button">◀</button>
+      <button class="touch-button fire-button" data-control="fire" type="button">FIRE</button>
+      <button class="touch-button" data-control="right" type="button">▶</button>
+    </div>
+
+    <footer>KEEP THE SKY ALIVE // DESTROY THE CORE</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
